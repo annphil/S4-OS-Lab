@@ -1,1 +1,45 @@
 https://codesavailable4copy.blogspot.com/2019/01/cs8461-operating-systems-laboratory.html
+#include<stdlib.h>
+#include<dirent.h>
+#include<stdio.h>
+void copy()
+{
+		char ch, sourcefile[20],targetfile[20];
+		FILE *source,*target, *t;
+		printf("enter the name of the source file \n");
+		scanf("%s",sourcefile);
+		printf("enter the name of the target file \n");
+		scanf("%s",targetfile);
+		source = fopen(sourcefile,"r");
+		if(source == NULL)
+		{
+		printf("press any key to exit\n");
+		exit(0);
+		}
+		target = fopen(targetfile,"w");
+		if(target == NULL)
+		{
+		printf("press any key to exit\n");
+		exit(0);
+		}
+		while((ch = fgetc(source)) != EOF)
+		{
+		fputc(ch,target);
+		}
+        printf("the file was copied successfully\n");
+        // Dint work :/
+		/*printf("the new file: \n");
+		t = fopen(targetfile,"r");
+		while(fgetc(t) != EOF)
+		{
+		ch = fgetc(t);
+		printf("%c", ch);
+		}*/
+		fclose(target);
+		fclose(source);
+}
+
+void main()
+{
+		copy();
+}
